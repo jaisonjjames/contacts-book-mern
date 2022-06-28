@@ -1,0 +1,35 @@
+{
+  "name": "contacts-book",
+  "version": "1.0.0",
+  "description": "Create and manage contacts with this app",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "JJ",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/lab": "^5.0.0-alpha.87",
+    "@mui/material": "^5.8.5",
+    "@mui/styles": "^5.8.4",
+    "@reduxjs/toolkit": "^1.8.2",
+    "connected-react-router": "^6.9.2",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "material-table": "^2.0.3",
+    "mongoose": "^6.3.8"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1",
+    "nodemon": "^2.0.16"
+  }
+}
