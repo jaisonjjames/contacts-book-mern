@@ -31,8 +31,6 @@ const ContactForm = ({ open, handleClose, currentId, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
 
-  console.log("currentId ------> ", currentId);
-
   const [contactData, setContactData] = useState(initialContactData);
 
   const currentContactDetails = useSelector((state) =>
@@ -41,10 +39,7 @@ const ContactForm = ({ open, handleClose, currentId, setCurrentId }) => {
       : null
   );
 
-  console.log("currentContactDetails ->>>> ", currentContactDetails);
-
   useEffect(() => {
-    console.log("currentContactDetails -> ", currentContactDetails);
     if (currentContactDetails) {
       setContactData(currentContactDetails);
     } else {

@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import MaterialTable from "material-table";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Card, IconButton } from "@material-ui/core";
@@ -68,6 +68,7 @@ const ContactTable = ({ handleOpen, setCurrentId }) => {
   const defaultMaterialTheme = createTheme();
   const classes = useStyles();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
 
   const contacts = useSelector((state) => state.contacts);
 
@@ -86,6 +87,12 @@ const ContactTable = ({ handleOpen, setCurrentId }) => {
     setCurrentId(id);
     handleOpen(true);
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
 
   return (
     <>
@@ -106,7 +113,7 @@ const ContactTable = ({ handleOpen, setCurrentId }) => {
           <MaterialTable
             title="Contact Details"
             icons={tableIcons}
-            isLoading={!contacts.length}
+            isLoading={loading}
             columns={[
               {
                 title: "",
