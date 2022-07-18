@@ -32,17 +32,19 @@ export const fetchContacts = () => async (dispatch, getState) => {
       userLogin: { userInfo },
     } = getState();
 
-    console.log('userInfo ---> ', userInfo);
+    const { token } = userInfo;
 
     const config = {
       headers: {
-        Authorization: `Bearer ${userInfo.token}`,
+        Authorization: `Bearer ${token}`,
       },
     };
 
     const { data } = await axios.get("/contact", config);
     dispatch({ type: FETCH_CONTACT, payload: data });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const deleteContact = (id) => async (dispatch, getState) => {

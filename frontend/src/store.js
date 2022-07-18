@@ -13,8 +13,9 @@ const rootReducer = (history) => ({
   userLogin: authReducer,
 });
 
-const userInfoFromStorage = localStorage.getItem("userInfo") || null;
-console.log('userInfoFromStorage ', userInfoFromStorage);
+const userInfoFromStorage =
+  JSON.parse(localStorage.getItem("userInfo")) || null;
+console.log("userInfoFromStorage ", userInfoFromStorage);
 
 const preloadedState = { userLogin: { userInfo: userInfoFromStorage } };
 export const store = configureStore({
@@ -24,20 +25,3 @@ export const store = configureStore({
 });
 
 export default store;
-
-// import { createStore, combineReducers, applyMiddleware } from 'redux';
-// import thunk from 'redux-thunk';
-// import { composeWithDevTools } from 'redux-devtools';
-// import { contactReducer } from './reducers/contact';
-
-// const reducers = combineReducers({
-//     contacts: contactReducer
-// });
-
-// const initialState = {};
-
-// const middleware = [thunk];
-
-// const store = createStore(reducers, initialState, composeWithDevTools(applyMiddleware(...middleware)));
-
-// export default store;

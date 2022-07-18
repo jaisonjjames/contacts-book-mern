@@ -3,6 +3,7 @@ import asyncHandler from 'express-async-handler';
 import User from '../model/userModel.js';
 
 const protect = asyncHandler(async (req, res, next) => {
+  console.log('req.headers.authorization -> ', req.headers.authorization);
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')
@@ -10,7 +11,7 @@ const protect = asyncHandler(async (req, res, next) => {
     try {
       let token = req.headers.authorization.split(' ')[1];
 
-      const decoded = jwt.verify(token, 'TheHeartCoder@2021');
+      const decoded = jwt.verify(token, 'jj@2022');
 
       req.user = await User.findById(decoded.id).select('-password');
 
